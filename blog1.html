@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .like-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .like-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .like-button:hover {
+            background-color: #2980b9;
+        }
+
+        .like-count {
+            font-size: 18px;
+        }
+
+        .comment-section {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .comment-time {
+            font-style: italic;
+            color: #777;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">
+        <a href="index.html" class="back-button">Back</a>
+    </div>
+    <div class="container">
+        <h1>My Blog Post</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, odio id mattis varius, velit odio vehicula ante, et aliquam ligula velit ac ligula. Nulla convallis eros et tortor pretium, at finibus nisi tempus. Nulla sed arcu eu sem consequat varius. Donec at diam massa. Nulla nec ultricies nulla. Morbi vel leo quis purus auctor feugiat vel ac lacus. Nam vel massa eget ex consequat fermentum. Nulla pulvinar enim sed enim dignissim, sed tincidunt odio varius. Nullam interdum felis eu viverra fringilla. Morbi ut nisi elit. Proin fringilla id risus in rutrum. In hac habitasse platea dictumst. Curabitur quis gravida eros, id tincidunt lacus. Donec nec congue ex.</p>
+        
+        <div class="like-container">
+            <button class="like-button" onclick="toggleLike()">Like</button>
+            <span class="like-count" id="likeCount">0</span>
+        </div>
+
+        <div class="comment-section">
+            <h2>Comments</h2>
+            <div class="comments" id="comments">
+                <div class="comment">
+                    <p><span class="comment-author">User1:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment">
+                    <p><span class="comment-author">User2:</span> Sed viverra, odio id mattis varius, velit odio vehicula ante.</p>
+                    <span class="comment-time">1 day ago</span>
+                </div>
+            </div>
+    </div>
+
+    <script>
+        let liked = false;
+        let likeCount = parseInt(localStorage.getItem('likeCount')) || 254;
+        document.getElementById('likeCount').innerText = likeCount;
+
+        if (localStorage.getItem('liked')) {
+            liked = true;
+            document.querySelector('.like-button').innerText = 'Unlike';
+        }
+        function toggleLike() {
+            liked = !liked;
+            if (liked) {
+                likeCount++;
+                document.querySelector('.like-button').innerText = 'Unlike';
+            } else {
+                likeCount--;
+                document.querySelector('.like-button').innerText = 'Like';
+            }
+            document.getElementById('likeCount').innerText = likeCount;
+            localStorage.setItem('likeCount', likeCount);
+            localStorage.setItem('liked', liked ? 'true' : '');
+        }
+    </script>
+</body>
+</html>

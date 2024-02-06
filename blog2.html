@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .like-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .like-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .like-button:hover {
+            background-color: #2980b9;
+        }
+
+        .like-count {
+            font-size: 18px;
+        }
+
+        .comment-section {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .comment-time {
+            font-style: italic;
+            color: #777;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">
+        <a href="index.html" class="back-button">Back</a>
+    </div>
+    <div class="container">
+        <h1>My Second Blog Post</h1>
+        <p>Artificial Intelligence (AI) has rapidly emerged as a transformative force in the tech industry. Over the past few years, AI has made its way into our daily lives, from virtual personal assistants like Siri and Alexa to self-driving cars and predictive analytics. As we move into the future, AI is poised to play an even more significant role in reshaping the tech landscape.
+
+            One of the key areas where AI is making strides is in healthcare. AI-powered diagnostic tools can analyze medical images, such as X-rays and MRIs, with unprecedented accuracy, aiding doctors in early disease detection. Additionally, AI-driven drug discovery is speeding up the process of developing new medications, potentially revolutionizing the pharmaceutical industry.
+            
+            In the field of autonomous vehicles, AI is paving the way for safer and more efficient transportation. Companies like Tesla and Waymo are pushing the boundaries of self-driving technology, aiming to reduce accidents and traffic congestion.
+            
+            AI-driven chatbots and virtual agents are enhancing customer service experiences, and AI-powered recommendation systems are transforming the way we discover content online.
+            
+            As AI continues to evolve, ethical considerations and responsible AI development become paramount. Striking the right balance between technological advancement and ethical responsibility will be a challenge that the tech industry must address.
+            
+            In conclusion, AI is set to be a driving force behind the future of technology. Its applications are diverse and promising, from healthcare and transportation to customer service and content discovery. As we navigate this AI-powered future, it is crucial to prioritize ethics and responsible AI development to ensure a positive and inclusive tech revolution.</p>
+        
+        <div class="like-container">
+            <button class="like-button" onclick="toggleLike()">Like</button>
+            <span class="like-count" id="likeCount"></span>
+        </div>
+
+        <div class="comment-section">
+            <h2>Comments</h2>
+            <div class="comments" id="comments">
+                <div class="comment">
+                    <p><span class="comment-author">User1:</span> Thats Crazy.</p>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment">
+                    <p><span class="comment-author">User2:</span> Ok bro.</p>
+                    <span class="comment-time">1 day ago</span>
+                </div>
+            </div>
+    </div>
+
+    <script>
+        let liked = false;
+        let likeCount = parseInt(localStorage.getItem('likeCount')) || 255;
+        document.getElementById('likeCount').innerText = likeCount;
+
+        if (localStorage.getItem('liked')) {
+            liked = true;
+            document.querySelector('.like-button').innerText = 'Unlike';
+        }
+        function toggleLike() {
+            liked = !liked;
+            if (liked) {
+                likeCount++;
+                document.querySelector('.like-button').innerText = 'Unlike';
+            } else {
+                likeCount--;
+                document.querySelector('.like-button').innerText = 'Like';
+            }
+            document.getElementById('likeCount').innerText = likeCount;
+            localStorage.setItem('likeCount', likeCount);
+            localStorage.setItem('liked', liked ? 'true' : '');
+        }
+    </script>
+</body>
+</html>
